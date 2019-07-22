@@ -72,6 +72,7 @@ class App extends Component{
       words = this.state.words;
     }
     else{
+      // Initializing with test data
       const names = new Names();
       words = names.words();
     }
@@ -100,6 +101,7 @@ class App extends Component{
       wordsArray = this.state.words;
     }
     else{
+      // Initializing with test data
       const names = new Names();
       wordsArray = names.words();
     }
