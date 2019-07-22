@@ -4,7 +4,7 @@ class BloomFilter{
         this.memory = new Array(length).fill(0); // filling the array with all 0s
     }
 
-    // string passes through 3 hash functions and the indices returned
+    // string passes through 4 hash functions and the indices returned
     // from the hash functions are set to 1 in the memory array
     add = (str) => {        
         this.memory[this.hashFn1(str, this.length)] = 1;
