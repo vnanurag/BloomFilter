@@ -54,6 +54,12 @@ class App extends Component{
         <div className="note">
           {this.state.searchMessage}
         </div>
+
+        <div className = "textInput">
+          Upload a file : 
+          <input  type="file" id="file" />
+        </div>
+        <div className="btn" onClick={this.upload}>Upload</div>
       </div>
       
     );
@@ -131,6 +137,22 @@ class App extends Component{
     this.setState({
       searchMessage: exists ? "Item may exist in the memory" : "Item does not exist in the memory"
     })
+  }
+
+  upload = () =>{
+    let data = [];
+    let file = document.getElementById("file").files[0];
+    let reader = new FileReader();
+    if(file){
+      reader.readAsText(file);
+      reader.onloadend = (event) => {
+        data = event.target.result.split('\n');
+        this.setState({
+          words: data
+        })
+        this.implementBloomFilter();
+      }
+    };
   }
 
   updateAddText = (noteText) =>{
